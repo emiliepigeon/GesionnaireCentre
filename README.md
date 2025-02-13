@@ -79,6 +79,12 @@ gagner du temps !
 -------------------------------------------------------------------------------------------------
 Stagiaire.java:
 -------------------------------------------------------------------------------------------------
+Cette classe hérite de Personne. J'utilise "extends Personne" pour ça.
+
+J'ai ajouté un attribut identifiant qui est spécifique aux stagiaires.
+
+J'ai créé une méthode historiqueFormations() qui affiche toutes les formations du stagiaire. 
+C'est pratique pour voir son parcours !
 
 -------------------------------------------------------------------------------------------------
 Formateur.java:
