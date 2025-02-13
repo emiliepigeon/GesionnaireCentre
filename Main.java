@@ -4,6 +4,7 @@
 public class Main {
     // La méthode main est le point de départ de mon programme
     public static void main(String[] args) {
-        // J'appelle
+        // J'appelle System.out.println() pour vérifier la syntaxe minimale
+        System.out.println("Mon programme fonctionne !");
     }
 }
