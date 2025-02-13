@@ -56,6 +56,15 @@ J'ai mis les attributs en privé (private) pour les protéger et j'ai créé des
 -------------------------------------------------------------------------------------------------
 Formation.java:
 -------------------------------------------------------------------------------------------------
+Cette classe représente une formation donnée dans un centre.
+
+J'ai utilisé la classe Date pour les dates de début et de fin. 
+Je devrai peut-être importer 
+java.util.Date pour que ça fonctionne.
+
+J'ai créé une méthode toString() pour afficher facilement les informations d'une formation.
+
+Comme pour la classe Centre, j'utilise des listes pour les formateurs et stagiaires.
 
 -------------------------------------------------------------------------------------------------
 Personne.java:
