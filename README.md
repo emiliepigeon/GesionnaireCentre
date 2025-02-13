@@ -69,6 +69,12 @@ Comme pour la classe Centre, j'utilise des listes pour les formateurs et stagiai
 -------------------------------------------------------------------------------------------------
 Personne.java:
 -------------------------------------------------------------------------------------------------
+C'est ma classe mère pour Stagiaire et Formateur.
+
+J'ai mis les attributs en protected pour que les classes filles puissent y accéder directement.
+
+J'ai créé une méthode toString() qui sera héritée par Stagiaire et Formateur, ce qui me fait 
+gagner du temps !
 
 -------------------------------------------------------------------------------------------------
 Stagiaire.java:
