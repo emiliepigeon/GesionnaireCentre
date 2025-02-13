@@ -89,3 +89,11 @@ C'est pratique pour voir son parcours !
 -------------------------------------------------------------------------------------------------
 Formateur.java:
 -------------------------------------------------------------------------------------------------
+Comme Stagiaire, cette classe hérite de Personne.
+
+J'ai ajouté un attribut matricule spécifique aux formateurs.
+
+J'ai créé des méthodes pour gérer les formations (ajouter, modifier, archiver). 
+Je n'ai pas implémenté toutes les méthodes pour simplifier l'exemple.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
