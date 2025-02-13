@@ -2,6 +2,15 @@
 package gestionnaire;
 
 public class Formateur extends Personne {
-    // Je déclare les attributs de la classe
-    // Je crée les méthodes
+    // Je déclare les attributs de la classe:
+	    // matricule
+    // Je crée les méthodes:
+	    // AjouterFormation()
+	    // ModifierFormation()
+	    // ArchiverFormation()
+	    // InscriptionParcoursStagiaire()
+	    // SuspendreParcoursStagiaire()
+	    // ArreterParcoursStagiaire()
+			// Getters:
+			// Setters uniquement si néceassaires: 
 }
