@@ -35,6 +35,12 @@ Centre et Formation sont des classes indépendantes, mais elles sont liées aux 
 -------------------------------------------------------------------------------------------------
 Main.java:
 -------------------------------------------------------------------------------------------------
+Dans ce fichier, j'ai créé la classe principale de mon programme. C'est ici que tout commence !
+
+J'ai choisi de mettre un simple message pour vérifier que mon programme fonctionne. 
+Ensuite, j'ai créé un objet Centre pour tester si je peux utiliser ma classe Centre.
+
+Je n'ai pas mis de package car Main.java est à la racine de mon projet.
 
 
 -------------------------------------------------------------------------------------------------
