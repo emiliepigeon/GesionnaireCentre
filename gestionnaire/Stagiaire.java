@@ -1,15 +1,12 @@
 // Je déclare que cette classe fait partie du package gestionnaire
 package gestionnaire;
 
-public class Personne {
+public class Stagiaire extends Personne {
     // Je déclare les attributs de la classe:
-	    // nom
-	    // prenom
-	    // mail
-	    // centre
-	    // formations
+	    // identifiant
     // Je crée les méthodes:
-	    // toString()
+	    // HistoriqueFormations()
+	    // ChangerMail()
 			// Getters:
 			// Setters uniquement si néceassaires: 
 }
