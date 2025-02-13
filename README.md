@@ -31,3 +31,40 @@ On appelle ça de l'héritage en programmation orientée objet.
 Ça veut dire que Stagiaire et Formateur ont toutes les caractéristiques de Personne, plus leurs propres spécificités.
 
 Centre et Formation sont des classes indépendantes, mais elles sont liées aux autres classes car elles contiennent des listes de Formateurs et de Stagiaires.
+
+-------------------------------------------------------------------------------------------------
+Main.java:
+-------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------
+PACKAGE: gestionnaire
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+Centre.java:
+-------------------------------------------------------------------------------------------------
+Cette classe représente un centre de formation.
+
+J'ai choisi d'utiliser des listes (ArrayList) pour stocker les formations, formateurs et stagiaires 
+car je ne sais pas à l'avance combien il y en aura.
+
+J'ai créé des méthodes pour ajouter des formations, formateurs et stagiaires, ainsi que pour obtenir 
+leurs listes. Ça me permettra de gérer facilement le contenu de mon centre.
+
+J'ai mis les attributs en privé (private) pour les protéger et j'ai créé des getters pour y accéder.
+
+-------------------------------------------------------------------------------------------------
+Formation.java:
+-------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------
+Personne.java:
+-------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------
+Stagiaire.java:
+-------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------
+Formateur.java:
+-------------------------------------------------------------------------------------------------
