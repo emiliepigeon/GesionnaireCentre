@@ -16,9 +16,9 @@ textMonProjet/
     ├── Stagiaire.java
     └── Formateur.java
 ```
-
+----------------------
 Explication du schéma:
-
+----------------------
 J'ai mis Main.java à la racine de mon projet car c'est le point d'entrée de mon programme.
 
 Toutes les autres classes sont dans un package (comme un dossier) appelé "gestionnaire".
@@ -42,6 +42,22 @@ Ensuite, j'ai créé un objet Centre pour tester si je peux utiliser ma classe C
 
 Je n'ai pas mis de package car Main.java est à la racine de mon projet.
 
+----------------------------------
+Suite modifications 14/02/2025
+----------------------------------
+J'ai mis à jour mon fichier Main.java pour utiliser le nouveau constructeur de la classe Centre.
+
+Maintenant, quand je crée un objet Centre, je lui donne toutes les informations : numéro, 
+libellé, responsable, adresse, code postal et ville.
+
+J'ai ajouté un appel à la méthode afficherInfos() pour voir toutes les informations du centre 
+que je viens de créer. Ça me permet de vérifier que tout fonctionne correctement.
+
+J'ai gardé mon message "Mon programme fonctionne !" au début. Comme ça, je sais tout de suite 
+si mon programme démarre bien.
+
+Ce fichier Main.java me sert de point d'entrée pour tester mes autres classes. Je peux y ajouter 
+d'autres tests au fur et à mesure que je développe mon projet.
 
 -------------------------------------------------------------------------------------------------
 PACKAGE: gestionnaire
@@ -58,6 +74,26 @@ J'ai créé des méthodes pour ajouter des formations, formateurs et stagiaires,
 leurs listes. Ça me permettra de gérer facilement le contenu de mon centre.
 
 J'ai mis les attributs en privé (private) pour les protéger et j'ai créé des getters pour y accéder.
+
+----------------------------------
+Suite modifications 14/02/2025
+----------------------------------
+J'ai ajouté de nouveaux attributs à ma classe Centre : responsable, adresse, codePostal et ville. 
+Ça me permet d'avoir plus d'informations sur chaque centre.
+
+J'ai aussi créé un nouveau constructeur qui prend tous ces attributs en paramètres. Comme ça, 
+je peux initialiser un centre avec toutes ses informations dès sa création.
+
+J'ai ajouté une méthode afficherInfos() qui me permet d'afficher facilement toutes les 
+informations d'un centre. C'est pratique pour vérifier que tout est bien enregistré !
+
+J'ai créé des getters pour tous les attributs, mais pas de setters. J'ai fait ce choix parce 
+que je pense que ces informations ne devraient pas changer une fois le centre créé. Si on veut 
+les modifier, il faudra créer un nouveau centre.
+
+Toutes mes méthodes sont commentées pour que je puisse comprendre facilement ce qu'elles font 
+quand je relirai mon code plus tard.
+
 
 -------------------------------------------------------------------------------------------------
 Formation.java:
