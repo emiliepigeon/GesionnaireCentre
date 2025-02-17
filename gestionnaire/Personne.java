@@ -36,5 +36,9 @@ public class Personne {
         return prenom;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
     // Je n'ajoute pas tous les getters pour garder l'exemple simple
 }

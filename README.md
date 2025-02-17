@@ -139,3 +139,5 @@ J'ai créé des méthodes pour gérer les formations (ajouter, modifier, archive
 Je n'ai pas implémenté toutes les méthodes pour simplifier l'exemple.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
+
+Suite du projet => toujours donnéesen dur dans le code et affichage uniquement en console
