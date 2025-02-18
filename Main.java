@@ -1,17 +1,17 @@
 // Main.java
 // J'importe toutes les classes dont j'ai besoin pour mon programme
-import gestionnaire.Centre; // J'importe la classe Centre pour gérer les centres de formation
-import gestionnaire.Stagiaire; // J'importe la classe Stagiaire pour gérer les stagiaires
-import gestionnaire.Formateur; // J'importe la classe Formateur pour gérer les formateurs
-import gestionnaire.Formation; // J'importe la classe Formation pour gérer les formations
-import java.util.ArrayList; // J'importe la classe ArrayList pour créer des listes dynamiques
-import java.util.Arrays; // J'importe la classe Arrays pour utiliser des tableaux (non utilisé ici, peut être supprimé)
-import java.util.List; // J'importe l'interface List pour utiliser les listes
-import java.util.Map; // J'importe l'interface Map pour utiliser les maps
-import java.util.HashMap; // J'importe la classe HashMap pour créer des maps
-import java.text.SimpleDateFormat; // J'importe SimpleDateFormat pour formater les dates
-import java.util.Date; // J'importe Date pour manipuler les dates
-import java.text.ParseException; // J'importe ParseException pour gérer les erreurs de format de date
+import gestionnaire.Centre;
+import gestionnaire.Stagiaire;
+import gestionnaire.Formateur;
+import gestionnaire.Formation;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.text.ParseException;
 
 // Je crée ma classe principale qui s'appelle Main
 public class Main {
@@ -19,67 +19,25 @@ public class Main {
     public static void main(String[] args) {
         // Je crée mes deux centres de formation
         Centre centreCandau = new Centre("4001", "Candau", "Sabrina", "Boulevard Ferdinand de Candau", "40000", "Mont-de-Marsan");
-        // Centre centreCandau : Je déclare une variable de type Centre pour stocker le centre Candau
-        // new Centre(...) : Je crée un nouvel objet Centre en utilisant le constructeur de la classe
-        // "4001" : Numéro du centre
-        // "Candau" : Nom du centre
-        // "Sabrina" : Responsable du centre
-        // "Boulevard Ferdinand de Candau" : Adresse du centre
-        // "40000" : Code postal du centre
-        // "Mont-de-Marsan" : Ville du centre
-
         Centre centreBosquet = new Centre("4002", "Bosquet", "Sabrina", "Boulevard Ferdinand de Candau", "40000", "Mont-de-Marsan");
-        // Centre centreBosquet : Je déclare une variable de type Centre pour stocker le centre Bosquet
-        // new Centre(...) : Je crée un nouvel objet Centre en utilisant le constructeur de la classe
-        // "4002" : Numéro du centre
-        // "Bosquet" : Nom du centre
-        // "Sabrina" : Responsable du centre
-        // "Boulevard Ferdinand de Candau" : Adresse du centre
-        // "40000" : Code postal du centre
-        // "Mont-de-Marsan" : Ville du centre
 
         // Je crée des Maps pour stocker les stagiaires et formateurs par centre
-        // Une Map est comme un dictionnaire qui associe une clé (ici, le centre) à une valeur (ici, une liste de personnes)
         Map<Centre, List<Stagiaire>> stagiaireParCentre = new HashMap<>();
-        // Map<Centre, List<Stagiaire>> : Je déclare une Map qui associe des objets Centre à des List de Stagiaire
-        //   - Centre : Type de la clé, chaque entrée de la Map correspond à un centre de formation
-        //   - List<Stagiaire> : Type de la valeur, une liste qui contiendra tous les stagiaires d'un centre
-        // stagiaireParCentre : Nom de la variable, décrit son contenu (stagiaires organisés par centre)
-        // new HashMap<>() : Je crée une nouvelle instance de HashMap, qui implémente l'interface Map
-        //   - HashMap est choisi pour sa performance en lecture/écriture avec des clés uniques
-        // Cette structure me permettra d'organiser efficacement mes stagiaires par centre de formation
         Map<Centre, List<Formateur>> formateurParCentre = new HashMap<>();
-        // Map<Centre, List<Formateur>> : Je déclare une Map qui associe des objets Centre à des List de Formateur
-        //   - Centre : Type de la clé, chaque entrée de la Map correspond à un centre de formation
-        //   - List<Formateur> : Type de la valeur, une liste qui contiendra tous les formateurs d'un centre
-        // formateurParCentre : Nom de la variable, décrit son contenu (formateurs organisés par centre)
-        // new HashMap<>() : Je crée une nouvelle instance de HashMap pour les formateurs
-        // Cette structure me permettra d'organiser efficacement mes formateurs par centre de formation
 
         // J'initialise les listes vides pour chaque centre dans mes Maps
         stagiaireParCentre.put(centreCandau, new ArrayList<>());
-        // J'initialise une liste vide de stagiaires pour le centre Candau
         stagiaireParCentre.put(centreBosquet, new ArrayList<>());
-        // J'initialise une liste vide de stagiaires pour le centre Bosquet
         formateurParCentre.put(centreCandau, new ArrayList<>());
-        // J'initialise une liste vide de formateurs pour le centre Candau
         formateurParCentre.put(centreBosquet, new ArrayList<>());
-        // J'initialise une liste vide de formateurs pour le centre Bosquet
 
         // Je crée une liste pour stocker mes formations
         List<Formation> formations = new ArrayList<>();
-        // List<Formation> : Je déclare une liste qui contiendra des objets de type Formation
-        // formations : Nom de la variable, cette liste contiendra toutes les formations
-        // new ArrayList<>() : Je crée une nouvelle instance d'ArrayList, qui implémente l'interface List
-        // Cette structure me permettra d'organiser et de gérer mes formations
 
         // Je définis le format de date que je vais utiliser
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        // SimpleDateFormat : Classe qui permet de formater et de parser des dates
-        // "dd/MM/yyyy" : Le format de date que je vais utiliser (jour/mois/année)
-        // Je crée un objet SimpleDateFormat pour pouvoir convertir mes chaînes de caractères en dates
 
-        // Je déclare les variables pour stocker les formations
+        // J'ajoute les formations à ma liste
         Formation adrn = null;
         Formation cda = null;
         Formation tai = null;
@@ -90,15 +48,8 @@ public class Main {
         Formation ais = null;
 
         try {
-            // J'ajoute les formations à ma liste en utilisant un bloc try-catch pour gérer les erreurs de conversion de date
             cda = new Formation("010101", "CDA", dateFormat.parse("03/01/2025"), dateFormat.parse("03/06/2025"), centreCandau);
-            // new Formation(...) : Je crée un nouvel objet Formation en utilisant le constructeur de la classe
-            // "010101" : Numéro de l'offre de formation
-            // "CDA" : Libellé de la formation
-            // dateFormat.parse("03/01/2025") : Date de début de la formation (convertie depuis une chaîne de caractères)
-            // dateFormat.parse("03/06/2025") : Date de fin de la formation (convertie depuis une chaîne de caractères)
-            // centreCandau : Centre de formation où se déroule la formation
-            formations.add(cda); // J'ajoute la formation à la liste des formations
+            formations.add(cda);
 
             adrn = new Formation("020202", "ADRN", dateFormat.parse("14/02/2025"), dateFormat.parse("14/05/2025"), centreCandau);
             formations.add(adrn);
@@ -122,24 +73,12 @@ public class Main {
             formations.add(ais);
 
         } catch (ParseException e) {
-            // Si la conversion de date échoue, j'affiche un message d'erreur
             System.err.println("Erreur lors de la conversion de date : " + e.getMessage());
-            // System.err.println() : Affiche un message d'erreur dans la console
-            // e.getMessage() : Récupère le message d'erreur de l'exception
         }
 
         // J'ajoute les stagiaires à leurs centres respectifs
-        // Pour chaque nouveau stagiaire, je crée un objet Stagiaire et je l'ajoute à la liste du centre correspondant
-        // **Attention, il faut modifier la classe Stagiaire pour que le constructeur prenne une formation en paramètre**
         Stagiaire nemar = new Stagiaire("Némar", "Jean", "jean.nemar@fmail.wip", centreCandau, "010101", adrn);
-        // new Stagiaire(...) : Je crée un nouvel objet Stagiaire en utilisant le constructeur de la classe
-        //   - "Némar" : Nom du stagiaire
-        //   - "Jean" : Prénom du stagiaire
-        //   - "jean.nemar@fmail.wip" : Email du stagiaire
-        //   - centreCandau : Centre auquel le stagiaire est rattaché
-        //   - "010101" : Identifiant unique du stagiaire
-        //   - adrn : Formation suivie par le stagiaire
-        stagiaireParCentre.get(centreCandau).add(nemar); // J'ajoute le stagiaire à la liste des stagiaires du centre Candau
+        stagiaireParCentre.get(centreCandau).add(nemar);
 
         Stagiaire croche = new Stagiaire("Croche", "Sarah", "sarah.croche@fmail.wip", centreCandau, "010102", adrn);
         stagiaireParCentre.get(centreCandau).add(croche);
@@ -193,53 +132,43 @@ public class Main {
         stagiaireParCentre.get(centreBosquet).add(peplu);
 
         // Je crée les formateurs
-        //Je crée les formateurs en initialisant la liste des formations enseignées
+        //Je crée les formateurs en initialisant la liste des formations enseignées et suivies
         Formateur sanschaise = new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101");
-        // Formateur sanschaise : Je déclare une variable de type Formateur pour stocker le formateur Sanschaise
-        // new Formateur(...) : Je crée un nouvel objet Formateur en utilisant le constructeur de la classe
-        //   - "Sanschaise" : Nom du formateur
-        //   - "Mathieu" : Prénom du formateur
-        //   - "mathieu.sanchez@afpa.fr" : Email du formateur
-        //   - centreCandau : Centre auquel le formateur est rattaché
-        //   - "010101" : Matricule du formateur
-        sanschaise.ajouterFormation(adrn);
-        // sanschaise.ajouterFormation(adrn) : J'ajoute la formation ADRN à la liste des formations enseignées par le formateur Sanschaise
-        sanschaise.ajouterFormation(cda);
-        // sanschaise.ajouterFormation(cda) : J'ajoute la formation CDA à la liste des formations enseignées par le formateur Sanschaise
+        sanschaise.ajouterFormationEnseignee(adrn);
+        sanschaise.ajouterFormationEnseignee(cda);
         formateurParCentre.get(centreCandau).add(sanschaise);
-        // formateurParCentre.get(centreCandau).add(sanschaise) : J'ajoute le formateur Sanschaise à la liste des formateurs du centre Candau
 
         Formateur podpod = new Formateur("Podpod", "Arnaud", "arnaud.podpod@afpa.fr", centreCandau, "020202");
-        podpod.ajouterFormation(tai);
-        podpod.ajouterFormation(tssr);
+        podpod.ajouterFormationEnseignee(tai);
+        podpod.ajouterFormationEnseignee(tssr);
         formateurParCentre.get(centreCandau).add(podpod);
 
         Formateur leroc = new Formateur("Leroc", "Samson", "samson.leroc@afpa.fr", centreCandau, "030303");
-        leroc.ajouterFormation(secuIncendie);
-        leroc.ajouterFormation(tssr);
+        leroc.ajouterFormationSuivie(secuIncendie);
+        leroc.ajouterFormationEnseignee(tssr);
         formateurParCentre.get(centreCandau).add(leroc);
 
         Formateur lebleu = new Formateur("Lebleu", "Vincent", "lebleu.vincent@afpa.fr", centreCandau, "040404");
-        lebleu.ajouterFormation(ais);
-        lebleu.ajouterFormation(cda);
+        lebleu.ajouterFormationEnseignee(ais);
+        lebleu.ajouterFormationEnseignee(cda);
         formateurParCentre.get(centreCandau).add(lebleu);
 
         Formateur doe = new Formateur("Doe", "John", "jd@secu-incendie.wip", centreBosquet, "INTERVENANT");
-        doe.ajouterFormation(secuIncendie);
+        doe.ajouterFormationEnseignee(secuIncendie);
         formateurParCentre.get(centreBosquet).add(doe);
 
         Formateur johnson = new Formateur("Johnson", "Diane", "dj@secu-incendie.wip", centreCandau, "INTERVENANT");
-        johnson.ajouterFormation(secuIncendie);
+        johnson.ajouterFormationEnseignee(secuIncendie);
         formateurParCentre.get(centreCandau).add(johnson);
 
         Formateur ulaire = new Formateur("Ulaire", "Anne", "anne.ulaire@afpa.fr", centreBosquet, "050505");
-        ulaire.ajouterFormation(secuIncendie);
-        ulaire.ajouterFormation(gdp);
+        ulaire.ajouterFormationSuivie(secuIncendie);
+        ulaire.ajouterFormationEnseignee(gdp);
         formateurParCentre.get(centreBosquet).add(ulaire);
 
         Formateur darbalete = new Formateur("Darbalète", "Janne", "janne.darbalete@afpa.fr", centreBosquet, "060606");
-        darbalete.ajouterFormation(secuIncendie);
-        darbalete.ajouterFormation(remn);
+        darbalete.ajouterFormationSuivie(secuIncendie);
+        darbalete.ajouterFormationEnseignee(remn);
         formateurParCentre.get(centreBosquet).add(darbalete);
 
         // J'affiche les formations pour vérifier que tout s'est bien passé
@@ -277,10 +206,19 @@ public class Main {
             for (Formateur formateur : formateurParCentre.get(centre)) {
                 // Et j'affiche les informations de chaque formateur
                 System.out.println("  " + formateur.getPrenom() + " " + formateur.getNom() + " (Matricule: " + formateur.getMatricule() + ")");
-                // Pour chaque formateur, j'affiche les formations qu'il enseigne
-                System.out.println("Formations enseignées par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
-                // Je parcours la liste des formations enseignées par le formateur
+
+                // Pour chaque formateur, j'affiche les formations qu'il anime
+                System.out.println("Formations animées par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
+                // Je parcours la liste des formations animées par le formateur
                 for (Formation formation : formateur.getFormationsEnseignees()) {
+                    // Et j'affiche le nom de chaque formation
+                    System.out.println("  - " + formation.getLibelle());
+                }
+
+                // Pour chaque formateur, j'affiche les formations qu'il suit
+                System.out.println("Formations suivies par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
+                // Je parcours la liste des formations suivies par le formateur
+                for (Formation formation : formateur.getFormationsSuivies()) {
                     // Et j'affiche le nom de chaque formation
                     System.out.println("  - " + formation.getLibelle());
                 }

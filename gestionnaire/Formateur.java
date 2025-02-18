@@ -11,6 +11,8 @@ public class Formateur extends Personne {
     private String matricule;
     // J'ajoute un attribut pour stocker les formations enseignées par le formateur
     private List<Formation> formationsEnseignees;
+    // J'ajoute un attribut pour stocker les formations suivies par le formateur
+    private List<Formation> formationsSuivies;
 
     // Je crée un constructeur pour créer un nouveau formateur
     public Formateur(String nom, String prenom, String mail, Centre centre, String matricule) {
@@ -20,6 +22,8 @@ public class Formateur extends Personne {
         this.matricule = matricule;
         // J'initialise la liste des formations enseignées
         this.formationsEnseignees = new ArrayList<>();
+        // J'initialise la liste des formations suivies
+        this.formationsSuivies = new ArrayList<>();
     }
 
     // Je surcharge la méthode toString pour afficher les informations du formateur
@@ -34,11 +38,18 @@ public class Formateur extends Personne {
         return matricule;
     }
 
-    // Je crée une méthode pour ajouter une formation au formateur
-    public void ajouterFormation(Formation formation) {
-        // J'ajoute la formation à la liste des formations du formateur
+    // Je crée une méthode pour ajouter une formation au formateur (pour les formations animées)
+    public void ajouterFormationEnseignee(Formation formation) {
+        // J'ajoute la formation à la liste des formations enseignées par le formateur
         formationsEnseignees.add(formation);
-        System.out.println(this.getPrenom() + " " + this.getNom() + " a été assigné à la formation : " + formation.getLibelle());
+        System.out.println(this.getPrenom() + " " + this.getNom() + " anime la formation : " + formation.getLibelle());
+    }
+
+     // Je crée une méthode pour ajouter une formation suivie par le formateur
+    public void ajouterFormationSuivie(Formation formation) {
+        // J'ajoute la formation à la liste des formations suivies par le formateur
+        formationsSuivies.add(formation);
+        System.out.println(this.getPrenom() + " " + this.getNom() + " suit la formation : " + formation.getLibelle());
     }
 
     // Je crée une méthode pour modifier une formation (à implémenter plus tard)
@@ -57,5 +68,10 @@ public class Formateur extends Personne {
     // Je crée un getter pour récupérer la liste des formations enseignées
     public List<Formation> getFormationsEnseignees() {
         return formationsEnseignees;
+    }
+
+    // Je crée un getter pour récupérer la liste des formations suivies
+    public List<Formation> getFormationsSuivies() {
+        return formationsSuivies;
     }
 }
