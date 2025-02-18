@@ -229,3 +229,5 @@ Voici quelques idées pour améliorer mon projet à l'avenir :
     Ajouter une validation sur les emails ou d'autres champs pour éviter les erreurs.
 
 C'est tout pour l'instant ! Ce projet m'aide beaucoup à comprendre les bases de la programmation orientée objet en Java. Si vous avez des suggestions ou si vous voulez m'aider à l'améliorer, n'hésitez pas ! 😊
+
+SUITE
