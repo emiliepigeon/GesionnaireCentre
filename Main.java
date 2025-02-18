@@ -77,62 +77,28 @@ public class Main {
         }
 
         // J'ajoute les stagiaires à leurs centres respectifs
-        Stagiaire nemar = new Stagiaire("Némar", "Jean", "jean.nemar@fmail.wip", centreCandau, "010101", adrn);
-        stagiaireParCentre.get(centreCandau).add(nemar);
-
-        Stagiaire croche = new Stagiaire("Croche", "Sarah", "sarah.croche@fmail.wip", centreCandau, "010102", adrn);
-        stagiaireParCentre.get(centreCandau).add(croche);
-
-        Stagiaire pote = new Stagiaire("Pote", "Jacques", "jacques.pote@fmail.wip", centreCandau, "010103", adrn);
-        stagiaireParCentre.get(centreCandau).add(pote);
-
-        Stagiaire voyant = new Stagiaire("Voyant", "Claire", "claire.voyant@fmail.wip", centreCandau, "010104", cda);
-        stagiaireParCentre.get(centreCandau).add(voyant);
-
-        Stagiaire attes = new Stagiaire("Attes", "Tom", "tom.attes@fmail.wip", centreCandau, "010105", cda);
-        stagiaireParCentre.get(centreCandau).add(attes);
-
-        Stagiaire formatik = new Stagiaire("Formatik", "Alain", "alain.formatik@fmail.wip", centreCandau, "010106", cda);
-        stagiaireParCentre.get(centreCandau).add(formatik);
-
-        Stagiaire stique = new Stagiaire("Stiqué", "Sophie", "sophie.stique@fmail.wip", centreCandau, "010107", tssr);
-        stagiaireParCentre.get(centreCandau).add(stique);
-
-        Stagiaire mau = new Stagiaire("Mau", "Dyna", "dyna.mau@fmail.wip", centreCandau, "010108", tssr);
-        stagiaireParCentre.get(centreCandau).add(mau);
-
-        Stagiaire matique = new Stagiaire("Matique", "Mathieu", "mathieu.matique@fmail.wip", centreCandau, "010109", tssr);
-        stagiaireParCentre.get(centreCandau).add(matique);
-
-        Stagiaire heration = new Stagiaire("Hération", "Alex", "alex.heration@fmail.wip", centreCandau, "010110", tai);
-        stagiaireParCentre.get(centreCandau).add(heration);
-
-        Stagiaire tare = new Stagiaire("Tare", "Guy", "guy.tare@fmail.wip", centreCandau, "010111", tai);
-        stagiaireParCentre.get(centreCandau).add(tare);
-
-        Stagiaire hitic = new Stagiaire("Hitic", "Paul", "paul.hitic@fmail.wip", centreCandau, "010112", tai);
-        stagiaireParCentre.get(centreCandau).add(hitic);
-
-        Stagiaire fite = new Stagiaire("Fite", "Néo", "neo.fite@fmail.wip", centreBosquet, "010113", remn);
-        stagiaireParCentre.get(centreBosquet).add(fite);
-
-        Stagiaire pierre = new Stagiaire("Pierre", "Emma", "emma.pierre@fmail.wip", centreBosquet, "010114", remn);
-        stagiaireParCentre.get(centreBosquet).add(pierre);
-
-        Stagiaire javel = new Stagiaire("Javel", "Aude", "aude.javel@fmail.wip", centreBosquet, "010115", remn);
-        stagiaireParCentre.get(centreBosquet).add(javel);
-
-        Stagiaire tation = new Stagiaire("Tation", "Lévy", "levy.tation@fmail.wip", centreBosquet, "010116", gdp);
-        stagiaireParCentre.get(centreBosquet).add(tation);
-
-        Stagiaire verse = new Stagiaire("Verse", "Alain", "alain.verse@fmail.wip", centreBosquet, "010117", gdp);
-        stagiaireParCentre.get(centreBosquet).add(verse);
-
-        Stagiaire peplu = new Stagiaire("Peplu", "Jean", "jean.peplu@fmail.wip", centreBosquet, "010118", gdp);
-        stagiaireParCentre.get(centreBosquet).add(peplu);
+        
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Némar", "Jean", "jean.nemar@fmail.wip", centreCandau, "010101", adrn));
+        
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Croche", "Sarah", "sarah.croche@fmail.wip", centreCandau, "010102", adrn));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Pote", "Jacques", "jacques.pote@fmail.wip", centreCandau, "010103", adrn));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Voyant", "Claire", "claire.voyant@fmail.wip", centreCandau, "010104", cda));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Attes", "Tom", "tom.attes@fmail.wip", centreCandau, "010105", cda));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Formatik", "Alain", "alain.formatik@fmail.wip", centreCandau, "010106", cda));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Stiqué", "Sophie", "sophie.stique@fmail.wip", centreCandau, "010107", tssr));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Mau", "Dyna", "dyna.mau@fmail.wip", centreCandau, "010108", tssr));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Matique", "Mathieu", "mathieu.matique@fmail.wip", centreCandau, "010109", tssr));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Hération", "Alex", "alex.heration@fmail.wip", centreCandau, "010110", tai));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Tare", "Guy", "guy.tare@fmail.wip", centreCandau, "010111", tai));
+        stagiaireParCentre.get(centreCandau).add(new Stagiaire("Hitic", "Paul", "paul.hitic@fmail.wip", centreCandau, "010112", tai));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Fite", "Néo", "neo.fite@fmail.wip", centreBosquet, "010113", remn));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Pierre", "Emma", "emma.pierre@fmail.wip", centreBosquet, "010114", remn));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Javel", "Aude", "aude.javel@fmail.wip", centreBosquet, "010115", remn));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Tation", "Lévy", "levy.tation@fmail.wip", centreBosquet, "010116", gdp));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Verse", "Alain", "alain.verse@fmail.wip", centreBosquet, "010117", gdp));
+        stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Peplu", "Jean", "jean.peplu@fmail.wip", centreBosquet, "010118", gdp));
 
         // Je crée les formateurs
-        //Je crée les formateurs en initialisant la liste des formations enseignées et suivies
         Formateur sanschaise = new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101");
         sanschaise.ajouterFormationEnseignee(adrn);
         sanschaise.ajouterFormationEnseignee(cda);
@@ -171,60 +137,65 @@ public class Main {
         darbalete.ajouterFormationEnseignee(remn);
         formateurParCentre.get(centreBosquet).add(darbalete);
 
-        // J'affiche les formations pour vérifier que tout s'est bien passé
-        System.out.println("\nListe des formations :");
-        // System.out.println() : Affiche un message dans la console
-        // "\nListe des formations :" : Le message que je veux afficher (avec un retour à la ligne au début)
+        // Organisation de l'affichage par centre
+        afficherInfosCentre(centreCandau, formations, stagiaireParCentre, formateurParCentre);
+        System.out.println("\n"); // Ajoute une ligne vide pour séparer les centres
+        afficherInfosCentre(centreBosquet, formations, stagiaireParCentre, formateurParCentre);
+    }
+
+////////////////////////////////////////////////////////////////////////
+    // Méthode pour afficher les informations d'un centre
+    public static void afficherInfosCentre(Centre centre, List<Formation> formations, Map<Centre, List<Stagiaire>> stagiaireParCentre, Map<Centre, List<Formateur>> formateurParCentre) {
+        System.out.println("Centre " + centre.getLibelle() + " (n°" + centre.getNumCentre() + "):");
+
+        // 1. Formations du centre
+        System.out.println("\nFormations proposées:");
         for (Formation formation : formations) {
-            // Je parcours tous les éléments de la liste formations
-            System.out.println(formation); // J'utilise la méthode toString de la classe Formation
-            // System.out.println() : Affiche un message dans la console
-            // formation : L'élément courant de la liste (un objet Formation)
-            // toString() : Méthode de la classe Formation qui permet d'afficher les informations de la formation de manière lisible
+            if (formation.getCentre().equals(centre)) {
+                System.out.println("  - " + formation.getLibelle());
+            }
         }
 
-        // J'affiche les stagiaires par centre
-        // Je parcours tous les centres dans ma Map stagiaireParCentre
-        for (Centre centre : stagiaireParCentre.keySet()) {
-            // Pour chaque centre, j'affiche son nom
-            System.out.println("Stagiaires du centre " + centre.getLibelle() + ":");
-            // Puis je parcours tous les stagiaires de ce centre
-            for (Stagiaire stagiaire : stagiaireParCentre.get(centre)) {
-                // Et j'affiche les informations de chaque stagiaire
-                System.out.println("  " + stagiaire);
+        // Formateurs du centre
+        System.out.println("\nFormateurs:");
+        List<Formateur> formateursDuCentre = formateurParCentre.get(centre);
+        if (formateursDuCentre != null && !formateursDuCentre.isEmpty()) {
+            for (Formateur formateur : formateursDuCentre) {
+                System.out.println("  - " + formateur.getPrenom() + " " + formateur.getNom() + " (Matricule: " + formateur.getMatricule() + ")");
             }
-            // J'ajoute une ligne vide pour la lisibilité
-            System.out.println();
+        } else {
+            System.out.println("  Aucun formateur dans ce centre.");
         }
 
-        // J'affiche les formateurs par centre
-        // Je parcours tous les centres dans ma Map formateurParCentre
-        for (Centre centre : formateurParCentre.keySet()) {
-            // Pour chaque centre, j'affiche son nom
-            System.out.println("Formateurs du centre " + centre.getLibelle() + ":");
-            // Puis je parcours tous les formateurs de ce centre
-            for (Formateur formateur : formateurParCentre.get(centre)) {
-                // Et j'affiche les informations de chaque formateur
-                System.out.println("  " + formateur.getPrenom() + " " + formateur.getNom() + " (Matricule: " + formateur.getMatricule() + ")");
+        // 2. Stagiaires (Tableau)
+        System.out.println("\nStagiaires:");
+        List<Stagiaire> stagiairesDuCentre = stagiaireParCentre.get(centre);
+        if (stagiairesDuCentre != null && !stagiairesDuCentre.isEmpty()) {
+            // Créer un tableau formaté
+            System.out.println(String.format("%-20s %-25s %-35s", "Nom", "Prénom", "Email"));
+            System.out.println("----------------------------------------------------------------------------------------------------");
+            for (Stagiaire stagiaire : stagiairesDuCentre) {
+                System.out.println(String.format("%-20s %-25s %-35s", stagiaire.getNom(), stagiaire.getPrenom(), stagiaire.getMail()));
+            }
+        } else {
+            System.out.println("  Aucun stagiaire dans ce centre.");
+        }
 
-                // Pour chaque formateur, j'affiche les formations qu'il anime
-                System.out.println("Formations animées par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
-                // Je parcours la liste des formations animées par le formateur
-                for (Formation formation : formateur.getFormationsEnseignees()) {
-                    // Et j'affiche le nom de chaque formation
-                    System.out.println("  - " + formation.getLibelle());
-                }
-
-                // Pour chaque formateur, j'affiche les formations qu'il suit
-                System.out.println("Formations suivies par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
-                // Je parcours la liste des formations suivies par le formateur
-                for (Formation formation : formateur.getFormationsSuivies()) {
-                    // Et j'affiche le nom de chaque formation
-                    System.out.println("  - " + formation.getLibelle());
+        // 3. Formations suivies par les formateurs du centre
+        System.out.println("\nFormations suivies par les formateurs:");
+        if (formateursDuCentre != null && !formateursDuCentre.isEmpty()) {
+            for (Formateur formateur : formateursDuCentre) {
+                System.out.println("  - " + formateur.getPrenom() + " " + formateur.getNom() + ":");
+                if (formateur.getFormationsSuivies() != null && !formateur.getFormationsSuivies().isEmpty()) {
+                    for (Formation formation : formateur.getFormationsSuivies()) {
+                        System.out.println("    - " + formation.getLibelle());
+                    }
+                } else {
+                    System.out.println("    Aucune formation suivie.");
                 }
             }
-            // J'ajoute une ligne vide pour la lisibilité
-            System.out.println();
+        } else {
+            System.out.println("  Aucun formateur dans ce centre.");
         }
     }
 }

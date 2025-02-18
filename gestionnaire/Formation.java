@@ -58,4 +58,9 @@ public class Formation {
     }
 
     // Je n'ajoute pas tous les getters pour garder l'exemple simple
+
+    // J'ajoute le getter pour récupérer le centre
+    public Centre getCentre() {
+        return centre;
+    }
 }

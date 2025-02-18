@@ -409,3 +409,24 @@ Mom main.java en détailles
         J'ai utilisé des boucles for-each pour parcourir efficacement mes collections.
 
 Ce Main.java me permet de simuler la gestion de centres de formation avec leurs stagiaires et formateurs associés, tout en affichant ces informations de manière organisée.
+
+///// Réorganisation du code du main pour l'affichage en console /////
+## Améliorations de l'organisation des sorties en console
+
+J'ai réorganisé les sorties en console pour une meilleure lisibilité et une présentation plus structurée des informations. Désormais, j'affiche les informations regroupées par centre de formation, avec les sections suivantes pour chaque centre :
+
+1.  **Formations proposées :** Je liste les formations dispensées dans le centre.
+
+2.  **Formateurs :** J'affiche la liste des formateurs affectés au centre.
+
+3.  **Stagiaires :** Je présente un tableau formaté avec les noms, prénoms et adresses e-mail des stagiaires inscrits au centre.
+
+4.  **Formations suivies par les formateurs :** Je liste les formations suivies par chaque formateur du centre.
+
+Je pense que cette réorganisation facilite la consultation des informations relatives à chaque centre et améliore l'expérience utilisateur lors de l'exécution du programme.
+
+**Fichiers modifiés et raisons :**
+
+*   **`Main.java` :** J'ai introduit une nouvelle méthode, `afficherInfosCentre`, qui prend en charge l'affichage des informations pour un centre donné. Cette méthode permet de regrouper les données pertinentes (formations, formateurs, stagiaires, formations suivies) et de les présenter de manière cohérente. J'ai également modifié la méthode `main` pour appeler cette nouvelle méthode pour chaque centre, assurant ainsi une organisation uniforme des sorties.
+
+*   **`Formation.java` :** J'ai ajouté un getter pour récupérer le centre associé à une formation (`getCentre()`). Cette modification est essentielle pour permettre à la méthode `afficherInfosCentre` de déterminer quelles formations sont proposées dans chaque centre.
