@@ -94,6 +94,24 @@ les modifier, il faudra créer un nouveau centre.
 Toutes mes méthodes sont commentées pour que je puisse comprendre facilement ce qu'elles font 
 quand je relirai mon code plus tard.
 
+18/02/2025 -----------------------------------------------------
+
+public Centre(String numCentre, String libelle, String responsable, String adresse, String codePostal, String ville) {
+    this.numCentre = numCentre;
+    this.libelle = libelle;
+    this.responsable = responsable;
+    this.adresse = adresse;
+    this.codePostal = codePostal;
+    this.ville = ville;
+}
+
+    Rôle : Ce constructeur est utilisé pour créer un nouveau centre de formation. C'est comme si je remplissais un formulaire pour enregistrer un nouveau centre dans mon programme. Il a besoin de toutes ces informations : numCentre (le numéro du centre), libelle (son nom), responsable (le nom du responsable), adresse, codePostal, et ville.
+
+    Fonctionnement : Il prend toutes ces informations et les range dans les variables de l'objet Centre. J'utilise this pour dire que je parle bien des variables de l'objet, et non des variables que je reçois en paramètre. C'est un peu comme si j'avais des étagères (les variables de l'objet) et que je rangeais les informations dessus.
+
+    Commentaire : C'est bien de commenter, ça m'aide à me souvenir de ce que fait chaque partie du code.
+
+
 
 -------------------------------------------------------------------------------------------------
 Formation.java:
@@ -108,6 +126,25 @@ J'ai créé une méthode toString() pour afficher facilement les informations d'
 
 Comme pour la classe Centre, j'utilise des listes pour les formateurs et stagiaires.
 
+18/02/2025-----------------------------------------------
+
+public Formation(String numOffre, String libelle, Date dateDebut, Date dateFin, Centre centre) {
+    this.numOffre = numOffre;
+    this.libelle = libelle;
+    this.dateDebut = dateDebut;
+    this.dateFin = dateFin;
+    this.centre = centre;
+    this.formateurs = new ArrayList<>();
+    this.stagiaires = new ArrayList<>();
+}
+
+    Rôle : Ce constructeur sert à créer une nouvelle formation. Il a besoin du numOffre (le numéro de l'offre de formation), du libelle (le nom de la formation), des dates de début et de fin (dateDebut, dateFin), et du centre où se déroule la formation.
+
+    Fonctionnement : Il range toutes ces informations dans les variables de l'objet Formation. Il crée aussi deux listes vides : formateurs et stagiaires. Comme pour la classe Personne, c'est une bonne idée de créer ces listes ici pour éviter les erreurs plus tard.
+
+    Commentaire : OK, je comprends pourquoi initialiser les listes ici, c'est plus sûr !
+
+
 -------------------------------------------------------------------------------------------------
 Personne.java:
 -------------------------------------------------------------------------------------------------
@@ -117,6 +154,23 @@ J'ai mis les attributs en protected pour que les classes filles puissent y accé
 
 J'ai créé une méthode toString() qui sera héritée par Stagiaire et Formateur, ce qui me fait 
 gagner du temps !
+
+18/02/2025-----------------------------------------------------
+
+public Personne(String nom, String prenom, String mail, Centre centre) {
+    this.nom = nom;
+    this.prenom = prenom;
+    this.mail = mail;
+    this.centre = centre;
+    this.formations = new ArrayList<>();
+}
+
+    Rôle : Ce constructeur sert à créer une nouvelle personne, que ce soit un stagiaire ou un formateur. Il a besoin du nom, du prenom, du mail et du centre où travaille la personne.
+
+    Fonctionnement : Il range les informations dans les variables de l'objet Personne. Il crée aussi une nouvelle liste vide formations. C'est important de le faire ici, sinon ma liste de formations pourrait être vide (null), et ça causerait des problèmes plus tard.
+
+    Commentaire : Bien pensé d'initialiser formations ici !
+
 
 -------------------------------------------------------------------------------------------------
 Stagiaire.java:
@@ -128,6 +182,25 @@ J'ai ajouté un attribut identifiant qui est spécifique aux stagiaires.
 J'ai créé une méthode historiqueFormations() qui affiche toutes les formations du stagiaire. 
 C'est pratique pour voir son parcours !
 
+18/02/2025--------------------------------------------------
+
+// Je crée un constructeur pour créer un nouveau stagiaire
+
+public Stagiaire(String nom, String prenom, String mail, Centre centre, String identifiant) {
+    // J'appelle le constructeur de la classe parente (Personne)
+    super(nom, prenom, mail, centre);
+    // J'initialise l'identifiant spécifique au stagiaire
+    this.identifiant = identifiant;
+}
+
+    Rôle : Ce constructeur sert à créer un nouvel objet Stagiaire. Il a besoin de toutes les informations de base d'une personne (nom, prénom, email, centre), et en plus, il a besoin de l'identifiant unique du stagiaire.
+
+    Fonctionnement : D'abord, il utilise le mot-clé super() pour appeler le constructeur de la classe Personne (la classe parente). Cela permet d'initialiser les attributs nom, prenom, mail et centre qui sont définis dans Personne. Ensuite, il initialise l'attribut identifiant spécifique à la classe Stagiaire.
+
+    Pourquoi c'est important : C'est essentiel d'appeler le constructeur de la classe parente avec super() pour s'assurer que tous les attributs hérités sont correctement initialisés. Si on ne le fait pas, on risque d'avoir des erreurs ou un comportement inattendu.
+
+
+
 -------------------------------------------------------------------------------------------------
 Formateur.java:
 -------------------------------------------------------------------------------------------------
@@ -137,6 +210,30 @@ J'ai ajouté un attribut matricule spécifique aux formateurs.
 
 J'ai créé des méthodes pour gérer les formations (ajouter, modifier, archiver). 
 Je n'ai pas implémenté toutes les méthodes pour simplifier l'exemple.
+
+18/02/2025-----------------------------------------------------------------
+
+public Formateur(String nom, String prenom, String mail, Centre centre, String matricule) {
+    super(nom, prenom, mail, centre);
+    this.matricule = matricule;
+}
+
+    Rôle : Ce constructeur sert à créer un nouveau formateur. Il a besoin des mêmes informations qu'une personne normale (nom, prenom, mail, centre), mais aussi du matricule spécifique au formateur.
+
+    Fonctionnement : Il appelle d'abord le constructeur de la classe Personne (avec super()) pour ranger les informations communes. Ensuite, il range le matricule dans la variable de l'objet Formateur. C'est important d'appeler super() en premier, sinon je risque d'avoir des problèmes !
+
+    Commentaire : Je me souviendrai d'appeler super() en premier !
+
+18/02/2025--------------- MES CONSTRUCTEURS ---------------------------------
+
+En résumé :
+
+    Mes constructeurs servent à créer de nouveaux objets de chaque classe.
+
+    Ils ont besoin de différentes informations pour bien initialiser les objets.
+
+    J'ai appris à utiliser this et super() correctement.
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -183,18 +280,18 @@ Voici comment je fais pour exécuter mon programme :
 
     Je place tous mes fichiers .java dans un dossier.
 
-    J'ouvre un terminal ou une invite de commande (par exemple PowerShell ou Command Prompt sous Windows).
+    J'ouvre un terminal ou une invite de commande (par exemple PowerShell ou Bash....).
 
     Je vais dans le dossier où se trouvent mes fichiers Java avec la commande cd.
 
     Je compile mon programme avec cette commande :
 
-bash
-javac Main.java
+
+    javac Main.java
 
 Une fois que tout est compilé sans erreur, j'exécute mon programme avec cette commande :
 
-    bash
+    
     java Main
 
 Utilisation
@@ -230,4 +327,85 @@ Voici quelques idées pour améliorer mon projet à l'avenir :
 
 C'est tout pour l'instant ! Ce projet m'aide beaucoup à comprendre les bases de la programmation orientée objet en Java. Si vous avez des suggestions ou si vous voulez m'aider à l'améliorer, n'hésitez pas ! 😊
 
-SUITE
+SUITE-------------------------------------------------------------------------------------------
+Mon projet est une application console Java qui gère des centres de formation, des stagiaires et des formateurs. Voici comment il est structuré et comment il fonctionne :
+
+    Structure du projet :
+
+        Main.java : C'est le point d'entrée de mon programme. Il contient la méthode main().
+
+        Centre.java : Définit la classe Centre avec ses attributs (numéro, libellé, responsable, adresse, etc.).
+
+        Personne.java : Une classe abstraite qui sert de base pour Stagiaire et Formateur.
+
+        Stagiaire.java : Hérite de Personne et ajoute un identifiant unique.
+
+        Formateur.java : Hérite de Personne et ajoute un matricule.
+
+        Formation.java : Représente une formation avec une liste de stagiaires et de formateurs.
+
+    Fonctionnement :
+    Dans Main.java, je crée d'abord des objets Centre. Ensuite, j'utilise des Map<Centre, List<Stagiaire>> et Map<Centre, List<Formateur>> pour associer des listes de stagiaires et de formateurs à chaque centre.
+
+    Je crée ensuite des objets Stagiaire et Formateur et les ajoute aux listes correspondantes dans les Map.
+
+    Enfin, j'affiche tous les stagiaires et formateurs par centre en parcourant ces Map.
+
+    Points clés :
+
+        J'utilise l'héritage pour factoriser le code commun entre Stagiaire et Formateur dans la classe Personne.
+
+        Les Map me permettent d'organiser facilement les stagiaires et formateurs par centre.
+
+        J'utilise des boucles for-each pour parcourir les Map et afficher les informations.
+
+    Améliorations possibles :
+
+        Ajouter des méthodes pour ajouter/supprimer des stagiaires et formateurs dynamiquement.
+
+        Implémenter une interface utilisateur simple pour interagir avec le programme.
+
+        Ajouter des validations pour les entrées (par exemple, vérifier le format des emails).
+
+Ce projet m'a permis de pratiquer les concepts de base de la programmation orientée objet en Java, comme les classes, l'héritage, et l'utilisation de collections.
+
+-----------------------------------------------------------------------------------------------
+Mom main.java en détailles
+
+
+    Structure générale :
+    Mon Main.java est la classe principale de mon programme. Elle contient la méthode main(), qui est le point d'entrée de l'application.
+
+    Imports :
+    Au début du fichier, j'importe les classes nécessaires, notamment Centre, Stagiaire, Formateur, ainsi que les classes utilitaires comme ArrayList, List, Map, et HashMap.
+
+    Création des centres :
+    Dans la méthode main(), je commence par créer deux objets Centre : centreCandau et centreBosquet. Chaque centre est initialisé avec ses informations spécifiques (numéro, libellé, responsable, adresse, etc.).
+
+    Initialisation des Map :
+    Je crée ensuite deux Map :
+
+        stagiaireParCentre : pour associer chaque centre à sa liste de stagiaires
+
+        formateurParCentre : pour associer chaque centre à sa liste de formateurs
+        Ces Map utilisent Centre comme clé et une List<Stagiaire> ou List<Formateur> comme valeur.
+
+    Ajout des stagiaires et formateurs :
+    J'ajoute ensuite plusieurs stagiaires et formateurs à chaque centre en utilisant la méthode add() sur les listes obtenues via get() sur les Map.
+
+    Affichage des informations :
+    Enfin, j'utilise deux boucles for imbriquées pour afficher les informations :
+
+        La boucle externe parcourt les centres (clés des Map)
+
+        La boucle interne parcourt les stagiaires ou formateurs de chaque centre
+
+    Points d'apprentissage :
+
+        J'ai appris à utiliser des structures de données complexes comme Map et List.
+
+        J'ai pratiqué la création d'objets et leur ajout dans des collections.
+
+        J'ai utilisé des boucles for-each pour parcourir efficacement mes collections.
+
+Ce Main.java me permet de simuler la gestion de centres de formation avec leurs stagiaires et formateurs associés, tout en affichant ces informations de manière organisée.

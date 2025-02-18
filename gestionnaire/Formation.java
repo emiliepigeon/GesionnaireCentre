@@ -15,7 +15,7 @@ public class Formation {
     private List<Formateur> formateurs;
     private List<Stagiaire> stagiaires;
 
-    // Je crée un constructeur pour initialiser une formation
+    // Je crée un CONSTRUCTEUR pour initialiser une formation
     public Formation(String numOffre, String libelle, Date dateDebut, Date dateFin, Centre centre) {
         this.numOffre = numOffre;
         this.libelle = libelle;

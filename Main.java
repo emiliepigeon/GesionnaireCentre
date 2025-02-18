@@ -18,11 +18,24 @@ public class Main {
         // Je crée des Maps pour stocker les stagiaires et formateurs par centre
         // Une Map est comme un dictionnaire qui associe une clé (ici, le centre) à une valeur (ici, une liste de personnes)
         Map<Centre, List<Stagiaire>> stagiaireParCentre = new HashMap<>();
+        // Map<Centre, List<Stagiaire>> : Je déclare une Map qui associe des objets Centre à des List de Stagiaire
+        //   - Centre : Type de la clé, chaque entrée de la Map correspond à un centre de formation
+        //   - List<Stagiaire> : Type de la valeur, une liste qui contiendra tous les stagiaires d'un centre
+        // stagiaireParCentre : Nom de la variable, décrit son contenu (stagiaires organisés par centre)
+        // new HashMap<>() : Je crée une nouvelle instance de HashMap, qui implémente l'interface Map
+        //   - HashMap est choisi pour sa performance en lecture/écriture avec des clés uniques
+        // Cette structure me permettra d'organiser efficacement mes stagiaires par centre de formation
         Map<Centre, List<Formateur>> formateurParCentre = new HashMap<>();
 
-        // J'initialise les listes vides pour chaque centre dans mes Maps
-        // Cela me permettra d'ajouter des stagiaires et des formateurs à chaque centre
+
+        // J'initialise une liste vide de stagiaires pour le centre Candau dans ma Map stagiaireParCentre
+        // Cela me permettra d'ajouter des stagiaires à ce centre plus tard....
         stagiaireParCentre.put(centreCandau, new ArrayList<>());
+        // stagiaireParCentre : C'est ma Map qui associe chaque Centre à sa liste de Stagiaires
+        // .put() : C'est une méthode de Map qui ajoute une nouvelle paire clé-valeur
+        // centreCandau : C'est la clé, un objet Centre que j'ai créé précédemment
+        // new ArrayList<>() : C'est la valeur, une nouvelle liste vide qui contiendra les Stagiaires
+        // Cette ligne prépare une liste vide pour le centre Candau, prête à recevoir des stagiaires
         stagiaireParCentre.put(centreBosquet, new ArrayList<>());
         formateurParCentre.put(centreCandau, new ArrayList<>());
         formateurParCentre.put(centreBosquet, new ArrayList<>());
@@ -30,6 +43,11 @@ public class Main {
         // J'ajoute les stagiaires à leurs centres respectifs
         // Pour chaque nouveau stagiaire, je crée un objet Stagiaire et je l'ajoute à la liste du centre correspondant
         stagiaireParCentre.get(centreCandau).add(new Stagiaire("Némar", "Jean", "jean.nemar@fmail.wip", centreCandau, "010101"));
+        // stagiaireParCentre : Map associant chaque Centre à sa List<Stagiaire>
+        // .get(centreCandau) : Récupère la List<Stagiaire> associée au centre Candau
+        // .add() : Méthode de List qui ajoute un élément à la fin de la liste
+        // new Stagiaire(...) : Crée un nouvel objet Stagiaire avec les informations fournies
+        // Cette ligne ajoute un nouveau Stagiaire à la liste des stagiaires du centre Candau
         stagiaireParCentre.get(centreCandau).add(new Stagiaire("Croche", "Sarah", "sarah.croche@fmail.wip", centreCandau, "010102"));
         stagiaireParCentre.get(centreCandau).add(new Stagiaire("Pote", "Jacques", "jacques.pote@fmail.wip", centreCandau, "010103"));
         stagiaireParCentre.get(centreCandau).add(new Stagiaire("Voyant", "Claire", "claire.voyant@fmail.wip", centreCandau, "010104"));
@@ -51,6 +69,16 @@ public class Main {
         // J'ajoute les formateurs à leurs centres respectifs
         // Pour chaque nouveau formateur, je crée un objet Formateur et je l'ajoute à la liste du centre correspondant
         formateurParCentre.get(centreCandau).add(new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101"));
+        // formateurParCentre : Map associant chaque Centre à sa List<Formateur>
+        // .get(centreCandau) : Récupère la List<Formateur> associée au centre Candau
+        // .add() : Méthode de List qui ajoute un élément à la fin de la liste
+        // new Formateur(...) : Crée un nouvel objet Formateur avec les informations fournies
+        //   - "Sanschaise" : Nom du formateur
+        //   - "Mathieu" : Prénom du formateur
+        //   - "mathieu.sanchez@afpa.fr" : Email du formateur
+        //   - centreCandau : Centre auquel le formateur est rattaché
+        //   - "010101" : Matricule unique du formateur
+        // Cette ligne ajoute un nouveau Formateur à la liste des formateurs du centre Candau
         formateurParCentre.get(centreCandau).add(new Formateur("Podpod", "Arnaud", "arnaud.podpod@afpa.fr", centreCandau, "020202"));
         formateurParCentre.get(centreCandau).add(new Formateur("Leroc", "Samson", "samson.leroc@afpa.fr", centreCandau, "030303"));
         formateurParCentre.get(centreCandau).add(new Formateur("Lebleu", "Vincent", "lebleu.vincent@afpa.fr", centreCandau, "040404"));
