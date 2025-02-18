@@ -5,6 +5,7 @@ import gestionnaire.Stagiaire; // J'importe la classe Stagiaire pour gérer les 
 import gestionnaire.Formateur; // J'importe la classe Formateur pour gérer les formateurs
 import gestionnaire.Formation; // J'importe la classe Formation pour gérer les formations
 import java.util.ArrayList; // J'importe la classe ArrayList pour créer des listes dynamiques
+import java.util.Arrays; // J'importe la classe Arrays pour utiliser des tableaux (non utilisé ici, peut être supprimé)
 import java.util.List; // J'importe l'interface List pour utiliser les listes
 import java.util.Map; // J'importe l'interface Map pour utiliser les maps
 import java.util.HashMap; // J'importe la classe HashMap pour créer des maps
@@ -55,14 +56,9 @@ public class Main {
         // new HashMap<>() : Je crée une nouvelle instance de HashMap pour les formateurs
         // Cette structure me permettra d'organiser efficacement mes formateurs par centre de formation
 
-        // J'initialise une liste vide de stagiaires pour le centre Candau dans ma Map stagiaireParCentre
-        // Cela me permettra d'ajouter des stagiaires à ce centre plus tard
+        // J'initialise les listes vides pour chaque centre dans mes Maps
         stagiaireParCentre.put(centreCandau, new ArrayList<>());
-        // stagiaireParCentre : C'est ma Map qui associe chaque Centre à sa liste de Stagiaires
-        // .put() : C'est une méthode de Map qui ajoute une nouvelle paire clé-valeur
-        // centreCandau : C'est la clé, un objet Centre que j'ai créé précédemment
-        // new ArrayList<>() : C'est la valeur, une nouvelle liste vide qui contiendra les Stagiaires
-        // Cette ligne prépare une liste vide pour le centre Candau, prête à recevoir des stagiaires
+        // J'initialise une liste vide de stagiaires pour le centre Candau
         stagiaireParCentre.put(centreBosquet, new ArrayList<>());
         // J'initialise une liste vide de stagiaires pour le centre Bosquet
         formateurParCentre.put(centreCandau, new ArrayList<>());
@@ -83,16 +79,18 @@ public class Main {
         // "dd/MM/yyyy" : Le format de date que je vais utiliser (jour/mois/année)
         // Je crée un objet SimpleDateFormat pour pouvoir convertir mes chaînes de caractères en dates
 
-        // J'ajoute les formations à ma liste
+        // Je déclare les variables pour stocker les formations
         Formation adrn = null;
         Formation cda = null;
         Formation tai = null;
         Formation tssr = null;
         Formation remn = null;
         Formation gdp = null;
+        Formation secuIncendie = null;
+        Formation ais = null;
 
         try {
-            // Je dois utiliser un try-catch car la conversion de String à Date peut échouer
+            // J'ajoute les formations à ma liste en utilisant un bloc try-catch pour gérer les erreurs de conversion de date
             cda = new Formation("010101", "CDA", dateFormat.parse("03/01/2025"), dateFormat.parse("03/06/2025"), centreCandau);
             // new Formation(...) : Je crée un nouvel objet Formation en utilisant le constructeur de la classe
             // "010101" : Numéro de l'offre de formation
@@ -117,11 +115,11 @@ public class Main {
             gdp = new Formation("060606", "GDP", dateFormat.parse("12/04/2025"), dateFormat.parse("21/07/2025"), centreBosquet);
             formations.add(gdp);
 
-            Formation secIncendieCandau = new Formation("050505", "Sécurité incendie", dateFormat.parse("29/05/2025"), dateFormat.parse("31/05/2025"), centreCandau);
-            formations.add(secIncendieCandau);
+            secuIncendie = new Formation("050505", "Sécurité incendie", dateFormat.parse("29/05/2025"), dateFormat.parse("31/05/2025"), centreCandau);
+            formations.add(secuIncendie);
 
-            Formation secIncendieBosquet = new Formation("050506", "Sécurité incendie", dateFormat.parse("29/05/2025"), dateFormat.parse("31/05/2025"), centreBosquet);
-            formations.add(secIncendieBosquet);
+            ais = new Formation("080808", "AIS", dateFormat.parse("01/01/2025"), dateFormat.parse("01/02/2025"), centreCandau);
+            formations.add(ais);
 
         } catch (ParseException e) {
             // Si la conversion de date échoue, j'affiche un message d'erreur
@@ -130,8 +128,9 @@ public class Main {
             // e.getMessage() : Récupère le message d'erreur de l'exception
         }
 
-         // J'ajoute les stagiaires à leurs centres respectifs
+        // J'ajoute les stagiaires à leurs centres respectifs
         // Pour chaque nouveau stagiaire, je crée un objet Stagiaire et je l'ajoute à la liste du centre correspondant
+        // **Attention, il faut modifier la classe Stagiaire pour que le constructeur prenne une formation en paramètre**
         Stagiaire nemar = new Stagiaire("Némar", "Jean", "jean.nemar@fmail.wip", centreCandau, "010101", adrn);
         // new Stagiaire(...) : Je crée un nouvel objet Stagiaire en utilisant le constructeur de la classe
         //   - "Némar" : Nom du stagiaire
@@ -192,24 +191,55 @@ public class Main {
 
         Stagiaire peplu = new Stagiaire("Peplu", "Jean", "jean.peplu@fmail.wip", centreBosquet, "010118", gdp);
         stagiaireParCentre.get(centreBosquet).add(peplu);
-// Je crée les formateurs
-        Formateur sanschaise = new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101");
-        Formateur podpod = new Formateur("Podpod", "Arnaud", "arnaud.podpod@afpa.fr", centreCandau, "020202");
-        Formateur leroc = new Formateur("Leroc", "Samson", "samson.leroc@afpa.fr", centreCandau, "030303");
-        Formateur lebleu = new Formateur("Lebleu", "Vincent", "lebleu.vincent@afpa.fr", centreCandau, "040404");
-        Formateur doe = new Formateur("Doe", "John", "jd@secu-incendie.wip", centreBosquet, "INTERVENANT");
-        Formateur johnson = new Formateur("Johnson", "Diane", "dj@secu-incendie.wip", centreCandau, "INTERVENANT");
-        Formateur ulaire = new Formateur("Ulaire", "Anne", "anne.ulaire@afpa.fr", centreBosquet, "050505");
-        Formateur darbalete = new Formateur("Darbalète", "Janne", "janne.darbalete@afpa.fr", centreBosquet, "060606");
 
-        // J'ajoute les formateurs à leurs centres respectifs
+        // Je crée les formateurs
+        //Je crée les formateurs en initialisant la liste des formations enseignées
+        Formateur sanschaise = new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101");
+        // Formateur sanschaise : Je déclare une variable de type Formateur pour stocker le formateur Sanschaise
+        // new Formateur(...) : Je crée un nouvel objet Formateur en utilisant le constructeur de la classe
+        //   - "Sanschaise" : Nom du formateur
+        //   - "Mathieu" : Prénom du formateur
+        //   - "mathieu.sanchez@afpa.fr" : Email du formateur
+        //   - centreCandau : Centre auquel le formateur est rattaché
+        //   - "010101" : Matricule du formateur
+        sanschaise.ajouterFormation(adrn);
+        // sanschaise.ajouterFormation(adrn) : J'ajoute la formation ADRN à la liste des formations enseignées par le formateur Sanschaise
+        sanschaise.ajouterFormation(cda);
+        // sanschaise.ajouterFormation(cda) : J'ajoute la formation CDA à la liste des formations enseignées par le formateur Sanschaise
         formateurParCentre.get(centreCandau).add(sanschaise);
+        // formateurParCentre.get(centreCandau).add(sanschaise) : J'ajoute le formateur Sanschaise à la liste des formateurs du centre Candau
+
+        Formateur podpod = new Formateur("Podpod", "Arnaud", "arnaud.podpod@afpa.fr", centreCandau, "020202");
+        podpod.ajouterFormation(tai);
+        podpod.ajouterFormation(tssr);
         formateurParCentre.get(centreCandau).add(podpod);
+
+        Formateur leroc = new Formateur("Leroc", "Samson", "samson.leroc@afpa.fr", centreCandau, "030303");
+        leroc.ajouterFormation(secuIncendie);
+        leroc.ajouterFormation(tssr);
         formateurParCentre.get(centreCandau).add(leroc);
+
+        Formateur lebleu = new Formateur("Lebleu", "Vincent", "lebleu.vincent@afpa.fr", centreCandau, "040404");
+        lebleu.ajouterFormation(ais);
+        lebleu.ajouterFormation(cda);
         formateurParCentre.get(centreCandau).add(lebleu);
+
+        Formateur doe = new Formateur("Doe", "John", "jd@secu-incendie.wip", centreBosquet, "INTERVENANT");
+        doe.ajouterFormation(secuIncendie);
         formateurParCentre.get(centreBosquet).add(doe);
+
+        Formateur johnson = new Formateur("Johnson", "Diane", "dj@secu-incendie.wip", centreCandau, "INTERVENANT");
+        johnson.ajouterFormation(secuIncendie);
         formateurParCentre.get(centreCandau).add(johnson);
+
+        Formateur ulaire = new Formateur("Ulaire", "Anne", "anne.ulaire@afpa.fr", centreBosquet, "050505");
+        ulaire.ajouterFormation(secuIncendie);
+        ulaire.ajouterFormation(gdp);
         formateurParCentre.get(centreBosquet).add(ulaire);
+
+        Formateur darbalete = new Formateur("Darbalète", "Janne", "janne.darbalete@afpa.fr", centreBosquet, "060606");
+        darbalete.ajouterFormation(secuIncendie);
+        darbalete.ajouterFormation(remn);
         formateurParCentre.get(centreBosquet).add(darbalete);
 
         // J'affiche les formations pour vérifier que tout s'est bien passé
@@ -239,12 +269,23 @@ public class Main {
         }
 
         // J'affiche les formateurs par centre
-        // Je fais la même chose que pour les stagiaires, mais avec les formateurs
+        // Je parcours tous les centres dans ma Map formateurParCentre
         for (Centre centre : formateurParCentre.keySet()) {
+            // Pour chaque centre, j'affiche son nom
             System.out.println("Formateurs du centre " + centre.getLibelle() + ":");
+            // Puis je parcours tous les formateurs de ce centre
             for (Formateur formateur : formateurParCentre.get(centre)) {
-                System.out.println("  " + formateur);
+                // Et j'affiche les informations de chaque formateur
+                System.out.println("  " + formateur.getPrenom() + " " + formateur.getNom() + " (Matricule: " + formateur.getMatricule() + ")");
+                // Pour chaque formateur, j'affiche les formations qu'il enseigne
+                System.out.println("Formations enseignées par " + formateur.getPrenom() + " " + formateur.getNom() + ":");
+                // Je parcours la liste des formations enseignées par le formateur
+                for (Formation formation : formateur.getFormationsEnseignees()) {
+                    // Et j'affiche le nom de chaque formation
+                    System.out.println("  - " + formation.getLibelle());
+                }
             }
+            // J'ajoute une ligne vide pour la lisibilité
             System.out.println();
         }
     }
