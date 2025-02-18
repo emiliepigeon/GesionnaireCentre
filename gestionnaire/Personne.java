@@ -40,5 +40,9 @@ public class Personne {
         return mail;
     }
 
+    public Centre getCentre() {
+        return centre;
+    }
+
     // Je n'ajoute pas tous les getters pour garder l'exemple simple
 }
