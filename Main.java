@@ -32,6 +32,8 @@ public class Main {
         formateurParCentre.put(centreBosquet, new ArrayList<>());
 
         // Je crée une liste pour stocker mes formations
+        // Ici arraylist est un interface qui utilise les méthodes de la class java arraylist et ne s'instencie pas
+        // il implémente list
         List<Formation> formations = new ArrayList<>();
 
         // Je définis le format de date que je vais utiliser
@@ -99,43 +101,53 @@ public class Main {
         stagiaireParCentre.get(centreBosquet).add(new Stagiaire("Peplu", "Jean", "jean.peplu@fmail.wip", centreBosquet, "010118", gdp));
 
         // Je crée les formateurs
+        System.out.println();
+
         Formateur sanschaise = new Formateur("Sanschaise", "Mathieu", "mathieu.sanchez@afpa.fr", centreCandau, "010101");
         sanschaise.ajouterFormationEnseignee(adrn);
         sanschaise.ajouterFormationEnseignee(cda);
         formateurParCentre.get(centreCandau).add(sanschaise);
+        System.out.println();
 
         Formateur podpod = new Formateur("Podpod", "Arnaud", "arnaud.podpod@afpa.fr", centreCandau, "020202");
         podpod.ajouterFormationEnseignee(tai);
         podpod.ajouterFormationEnseignee(tssr);
         formateurParCentre.get(centreCandau).add(podpod);
+        System.out.println();
 
         Formateur leroc = new Formateur("Leroc", "Samson", "samson.leroc@afpa.fr", centreCandau, "030303");
         leroc.ajouterFormationSuivie(secuIncendie);
         leroc.ajouterFormationEnseignee(tssr);
         formateurParCentre.get(centreCandau).add(leroc);
+        System.out.println();
 
         Formateur lebleu = new Formateur("Lebleu", "Vincent", "lebleu.vincent@afpa.fr", centreCandau, "040404");
         lebleu.ajouterFormationEnseignee(ais);
         lebleu.ajouterFormationEnseignee(cda);
         formateurParCentre.get(centreCandau).add(lebleu);
+        System.out.println();
 
         Formateur doe = new Formateur("Doe", "John", "jd@secu-incendie.wip", centreBosquet, "INTERVENANT");
         doe.ajouterFormationEnseignee(secuIncendie);
         formateurParCentre.get(centreBosquet).add(doe);
+        System.out.println();
 
         Formateur johnson = new Formateur("Johnson", "Diane", "dj@secu-incendie.wip", centreCandau, "INTERVENANT");
         johnson.ajouterFormationEnseignee(secuIncendie);
         formateurParCentre.get(centreCandau).add(johnson);
+        System.out.println();
 
         Formateur ulaire = new Formateur("Ulaire", "Anne", "anne.ulaire@afpa.fr", centreBosquet, "050505");
         ulaire.ajouterFormationSuivie(secuIncendie);
         ulaire.ajouterFormationEnseignee(gdp);
         formateurParCentre.get(centreBosquet).add(ulaire);
+        System.out.println();
 
         Formateur darbalete = new Formateur("Darbalète", "Janne", "janne.darbalete@afpa.fr", centreBosquet, "060606");
         darbalete.ajouterFormationSuivie(secuIncendie);
         darbalete.ajouterFormationEnseignee(remn);
         formateurParCentre.get(centreBosquet).add(darbalete);
+        System.out.println();
 
         // Organisation de l'affichage par centre
         afficherInfosCentre(centreCandau, formations, stagiaireParCentre, formateurParCentre);
@@ -146,6 +158,8 @@ public class Main {
 ////////////////////////////////////////////////////////////////////////
     // Méthode pour afficher les informations d'un centre
     public static void afficherInfosCentre(Centre centre, List<Formation> formations, Map<Centre, List<Stagiaire>> stagiaireParCentre, Map<Centre, List<Formateur>> formateurParCentre) {
+        System.out.println();
+
         System.out.println("Centre " + centre.getLibelle() + " (n°" + centre.getNumCentre() + "):");
 
         // 1. Formations du centre
@@ -172,10 +186,11 @@ public class Main {
         List<Stagiaire> stagiairesDuCentre = stagiaireParCentre.get(centre);
         if (stagiairesDuCentre != null && !stagiairesDuCentre.isEmpty()) {
             // Créer un tableau formaté
-            System.out.println(String.format("%-20s %-25s %-35s", "Nom", "Prénom", "Email"));
+            System.out.println( "\033[31m" + "coucou");
+            System.out.println(String.format("%-10s %-25s %-35s", "Nom", "Prénom", "Email"));
             System.out.println("----------------------------------------------------------------------------------------------------");
             for (Stagiaire stagiaire : stagiairesDuCentre) {
-                System.out.println(String.format("%-20s %-25s %-35s", stagiaire.getNom(), stagiaire.getPrenom(), stagiaire.getMail()));
+                System.out.println(String.format("%-10s %-25s %-35s", stagiaire.getNom(), stagiaire.getPrenom(), stagiaire.getMail()));
             }
         } else {
             System.out.println("  Aucun stagiaire dans ce centre.");

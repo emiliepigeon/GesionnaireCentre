@@ -1,3 +1,134 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////// 25/02/2025 //////////////////////////////////////////////////
+
+Question de Mathieu:
+------------------------------------------------------------------------------------------------
+1/ réfléchir au rôle de chaque classes
+------------------------------------------------------------------------------------------------
+Structure actuelle (phase1) de mon premier projet Gestionnaire de centre
+Organisation des fichiers :
+
+1. La classe `Main.java` à la racine = point d'entrée du programme.
+
+2. L'utilisation d'un package `gestionnaire` pour regrouper les classes liées = organisation du code (pour moi c'est plus clair).
+
+3. La hiérarchie des classes avec:
+- `Personne` comme classe mère de `Stagiaire` et `Formateur`= utilisation de l'héritage en POO.
+
+## Classes principales
+
+- `Centre.java` : la classe qui gère l'ensemble du centre de formation.
+- `Formation.java` : Représente les formations proposées.
+- `Personne.java` : Classe de base pour les individus dans le système.
+    => une méthode présentation peut être ajoutée pour afficher les informations de la personne. Quelque soit sont rang (stagiaire / formateur / responsable......)
+    => l'utilisation de la class abstraite car Personne est une classe de base et ne peut pas être instanciée directement, mais les classes filles peuvent l'être. C'est une sorte de moule....
+- `Stagiaire.java` : Représente un apprenant, hérite de `Personne`.
+- `Formateur.java` : Représente un enseignant, hérite également de `Personne`.
+
+## Relations entre les classes
+
+1. `Centre` et `Formation` sont liés, chaque Centre gérent plusieurs Formations.
+2. `Formation` contient des listes de `Stagiaire` et de `Formateur`.
+3. `Stagiaire` et `Formateur` héritent des attributs et méthodes de `Personne`, tout en ayant leurs propres spécificités.
+
+------------------------------------------------------------------------------------------------
+2/ réfléchir aux interfaces qui peuvent être implémentées dans le projet
+------------------------------------------------------------------------------------------------
+
+ L'ajout d'interfaces pour définir des comportements communs et améliorer la flexibilité et la structure de mon code (et du projet = du programme).
+
+ J'ai pensé à créer l'interface Gestion de service 'GestionService' pour définir de méthodes communes entre les classes de gestion (Stagiaire, Formateur..... responsable).
+ Cette Interface 'GestionService' pour standardiser les opérations CRUD :
+ -CREAT (inscrire un stagiaire à un parcours de formation ou un formateur)
+ -READ (afficher les informations d'un stagiaire ou d'un formateur)
+ -UPDATE (mettre à jour si changement dans les données => ex email...)
+ -DELETE (supprimer un stagiaire ou un formateur)
+
+ public interface GestionService<T> {
+    void ajouter(T element);
+    T obtenir(int id);
+    List<T> obtenirTous();
+    void modifier(T element);
+    void supprimer(int id);
+}
+// Le T dans l'interface GestionService<T> est un paramètre de type générique. 
+
+ EX de class qui implémente cette interface (pour chaque type d'entité) :
+ public class GestionStagiaire implements GestionService<Stagiaire> {
+    private List<Stagiaire> stagiaires = new ArrayList<>();
+
+    @Override
+    public void ajouter(Stagiaire stagiaire) {
+        stagiaires.add(stagiaire);
+    }
+
+    @Override
+    public Stagiaire obtenir(int id) {
+        return stagiaires.get(id);
+    }
+
+    @Override
+    public List<Stagiaire> obtenirTous() {
+        return new ArrayList<>(stagiaires);
+    }
+
+    @Override
+    public void modifier(Stagiaire stagiaire) {
+        // Logique de modification
+    }
+
+    @Override
+    public void supprimer(int id) {
+        stagiaires.remove(id);
+    }
+}
+
+// Similairement pour GestionFormateur voir => GestionFormation
+
+-------
+
+ Pour plus de logique je renomme mes classes:
+ - 'Personne.java' = "GestionPersonne.java" => classe mère
+ - 'Stagiaire.java' = "GestionStagiaire.java" => class fille de 'GestionPersonne.java'
+ - 'Formateur.java' = "GestionFormateur.java" => class fille de 'GestionPersonne.java"
+
+Ensuite, je fais en sorte que mes classes comme GestionStagiaire et GestionFormateur "implémentent" cette interface. Cela signifie qu'elles doivent avoir toutes ces méthodes.
+
+L'avantage, c'est que je peux maintenant traiter tous mes services de gestion de la même manière, peu importe s'il s'agit de stagiaires ou de formateurs. C'est comme si je créais un "contrat" que toutes ces classes doivent respecter.
+
+La logique derrière cela est de rendre mon code plus uniforme et plus facile à comprendre. Si je veux ajouter un nouveau type de personne plus tard, comme un "Administrateur", je sais exactement quelles méthodes je dois inclure.
+
+Je peux aussi créer plusieurs types d'interfaces au besoin si il y a des comportements différents entre les classes de gestion.
+Une classe peut implémenter plusieurs interfaces.
+
+En clair : certaines classes peuvent avoir besoin de méthodes spécifiques qui ne s'appliquent pas aux autres. Dans ce cas, je peux soit ajouter ces méthodes en plus de celles de l'interface, soit créer des interfaces plus spécifiques pour ces cas particuliers.
+Car je pense qu'il faut faire attention à ne pas trop généraliser.
+
+En résumé, utiliser des interfaces me permet de mieux organiser mon code, de le rendre plus cohérent et plus facile à étendre à l'avenir. C'est un peu comme créer un plan standard pour toutes mes classes de gestion, tout en gardant la possibilité d'ajouter des particularités quand c'est nécessaire.
+
+------------------------------------------------------------------------------------------------
+3/ réfléchir a l'intégration d'une base de données (quel package Java est utilisé, qui va gérer les interactions, comment intégrer ca au projet, etc)
+------------------------------------------------------------------------------------------------
+
+Alors j'ai cherché et d'après les indices donnés (SQLite en utilisant le gestionnaire de dépances Maven).
+
+JDBC (Java Database Connectivity) est une API Java qui permet aux développeurs d'interagir avec des bases de données relationnelles.
+
+Pour établir une connexion à une base de données SQLite en utilisant Maven comme gestionnaire de dépendances, suivez ces étapes:
+
+1. Ajoutez la dépendance SQLite JDBC à votre fichier `pom.xml` :
+2. Dans le code Java, utiliser le pilote JDBC pour SQLite pour établir la connexion :
+..... à partir de là j'ai une vague idée (de dev web)...
+"chemin/vers/votre/base.db" par le chemin réel vers votre fichier de base de données SQLite.
+
+## Persistance des données
+
+1. Utilisez JDBC pour vous connecter à votre base de données SQLite.
+2. Implémentez les méthodes CRUD de l'interface GestionService pour chaque entité.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 13/02/2025 
 
 Début TP = Appliction de gestion de centre
@@ -430,3 +561,8 @@ Je pense que cette réorganisation facilite la consultation des informations rel
 *   **`Main.java` :** J'ai introduit une nouvelle méthode, `afficherInfosCentre`, qui prend en charge l'affichage des informations pour un centre donné. Cette méthode permet de regrouper les données pertinentes (formations, formateurs, stagiaires, formations suivies) et de les présenter de manière cohérente. J'ai également modifié la méthode `main` pour appeler cette nouvelle méthode pour chaque centre, assurant ainsi une organisation uniforme des sorties.
 
 *   **`Formation.java` :** J'ai ajouté un getter pour récupérer le centre associé à une formation (`getCentre()`). Cette modification est essentielle pour permettre à la méthode `afficherInfosCentre` de déterminer quelles formations sont proposées dans chaque centre.
+
+
+
+
+

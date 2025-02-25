@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Centre {
-    // Je déclare les attributs de la classe:
+    // Je déclare les attributs de la classe: // quand il y en bcp ce mettent à la fin
     private String numCentre;
     private String libelle;
     private String responsable;
