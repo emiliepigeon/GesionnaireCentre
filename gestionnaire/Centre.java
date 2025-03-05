@@ -2,11 +2,11 @@
 package gestionnaire;
 
 // J'importe les classes ArrayList et List pour gérer mes listes
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class Centre {
-    // Je déclare les attributs de la classe: // quand il y en bcp ce mettent à la fin
+    // Je déclare les attributs de la classe:
+    private int id; // Nouvel attribut id
     private String numCentre;
     private String libelle;
     private String responsable;
@@ -32,6 +32,14 @@ public class Centre {
     }
 
     // Je crée les getters pour accéder à mes attributs privés:
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNumCentre() {
         return numCentre;
     }
@@ -41,4 +49,18 @@ public class Centre {
     }
 
     // ... Ajoutez les autres getters si nécessaire
+
+    // Méthodes equals et hashCode
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Centre centre = (Centre) o;
+        return id == centre.id && Objects.equals(numCentre, centre.numCentre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, numCentre);
+    }
 }
